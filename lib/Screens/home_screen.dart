@@ -17,18 +17,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          HomeContainer(
-            baslik: 'Gül',
-            image: 'assets/images/rose.png',
-
-            DetailBaslik: 'Gül',
-          ),
-          HomeContainer(
-            baslik: 'Orkide',
-            image: 'assets/images/orchid.png',
-
-            DetailBaslik: 'Orkide',
-          ),
+          HomeContainer(baslik: 'Gül', image: 'assets/images/rose.png'),
+          HomeContainer(baslik: 'Orkide', image: 'assets/images/orchid.png'),
+          HomeContainer(baslik: 'Papatya', image: 'assets/images/papatya.png'),
+          HomeContainer(baslik: 'Lavanta', image: 'assets/images/lavender.png'),
         ],
       ),
     );
@@ -38,13 +30,8 @@ class HomeScreen extends StatelessWidget {
 class HomeContainer extends StatelessWidget {
   final String baslik;
   final String image;
-  final String DetailBaslik;
-  const HomeContainer({
-    super.key,
-    required this.baslik,
-    required this.image,
-    required this.DetailBaslik,
-  });
+
+  const HomeContainer({super.key, required this.baslik, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +67,7 @@ class HomeContainer extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder:
-                        (context) => DetailScreen(detailBaslik: DetailBaslik),
+                    builder: (context) => DetailScreen(detailBaslik: baslik),
                   ),
                 );
               },
