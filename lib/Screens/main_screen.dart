@@ -9,6 +9,7 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
+//Sayfa geçişleri ve curvedBar burada
 class _MainScreenState extends State<MainScreen> {
   final List<Widget> pages = [HomeScreen(), ProfileScreen()];
   final List<Widget> icons = [
@@ -19,11 +20,12 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: pages[_page],
       bottomNavigationBar: CurvedNavigationBar(
         items: icons,
         index: _page,
-        color: Colors.purple,
+        color: Colors.deepPurple.shade900,
         animationDuration: Duration(milliseconds: 300),
         backgroundColor: Colors.transparent,
         height: 65,
