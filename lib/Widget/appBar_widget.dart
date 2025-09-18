@@ -5,11 +5,13 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String text;
   final Color colorText;
   final Color colorBar;
+  final Color? iconColor;
   const AppbarWidget({
     super.key,
     required this.text,
     required this.colorText,
     required this.colorBar,
+    this.iconColor,
   });
 
   @override
@@ -18,6 +20,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(text, style: TextStyle(color: colorText)),
       backgroundColor: colorBar,
+      iconTheme: IconThemeData(color: iconColor),
     );
   }
 
