@@ -1,5 +1,6 @@
-import 'package:crafty/Screens/screen.dart';
-import 'package:crafty/Widget/appBar_widget.dart';
+import 'package:crafty/Containers/container.dart';
+import 'package:crafty/Models/model.dart';
+import 'package:crafty/Widget/widget.dart';
 import 'package:flutter/material.dart';
 
 //Ana Sayfa kısmı burada
@@ -17,64 +18,31 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          HomeContainer(baslik: 'Gül', image: 'assets/images/rose.png'),
-          HomeContainer(baslik: 'Orkide', image: 'assets/images/orchid.png'),
-          HomeContainer(baslik: 'Papatya', image: 'assets/images/papatya.png'),
-          HomeContainer(baslik: 'Lavanta', image: 'assets/images/lavender.png'),
+          HomeContainer(
+            homeContainerModel: HomeContainerModel(
+              baslik: 'Gül',
+              image: 'assets/images/rose.png',
+            ),
+          ),
+          HomeContainer(
+            homeContainerModel: HomeContainerModel(
+              baslik: 'Orkide',
+              image: 'assets/images/orchid.png',
+            ),
+          ),
+          HomeContainer(
+            homeContainerModel: HomeContainerModel(
+              baslik: 'Papatya',
+              image: 'assets/images/papatya.png',
+            ),
+          ),
+          HomeContainer(
+            homeContainerModel: HomeContainerModel(
+              baslik: 'Lavanta',
+              image: 'assets/images/lavender.png',
+            ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class HomeContainer extends StatelessWidget {
-  final String baslik;
-  final String image;
-
-  const HomeContainer({super.key, required this.baslik, required this.image});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-      child: Container(
-        height: 120,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Colors.white,
-        ),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: CircleAvatar(
-                radius: 40,
-                backgroundImage: AssetImage(image),
-                backgroundColor: Colors.transparent,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: Text(
-                baslik,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailScreen(detailBaslik: baslik),
-                  ),
-                );
-              },
-              icon: Icon(Icons.arrow_circle_right, size: 30),
-            ),
-          ],
-        ),
       ),
     );
   }

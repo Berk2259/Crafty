@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final List<Widget> pages = [HomeScreen(), ProfileScreen()];
   final List<Widget> icons = [
-    Image.asset('assets/images/home.png'),
+    Image.asset('assets/images/flowers.png'),
     Image.asset('assets/images/profile.png'),
   ];
   int _page = 0;

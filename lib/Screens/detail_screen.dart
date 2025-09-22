@@ -1,5 +1,6 @@
-import 'package:crafty/Screens/home_screen.dart';
-import 'package:crafty/Widget/appBar_widget.dart';
+import 'package:crafty/Models/model.dart';
+import 'package:crafty/Containers/container.dart';
+import 'package:crafty/Widget/widget.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -28,6 +29,23 @@ class DetailScreen extends StatelessWidget {
                   topRight: Radius.circular(25),
                 ),
                 color: Colors.deepPurple.shade300,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DetailMalzemeContainer(
+                    detailMalzemeContainerModel: DetailMalzemeContainerModel(
+                      icon: 'assets/images/makas.png',
+                      malzeme: 'Makas',
+                    ),
+                  ),
+                  DetailMalzemeContainer(
+                    detailMalzemeContainerModel: DetailMalzemeContainerModel(
+                      icon: 'assets/images/makas.png',
+                      malzeme: 'Makas',
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

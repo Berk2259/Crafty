@@ -1,4 +1,4 @@
-import 'package:crafty/Widget/appBar_widget.dart';
+import 'package:crafty/Widget/widget.dart';
 import 'package:flutter/material.dart';
 
 //Profil kısmı burada
