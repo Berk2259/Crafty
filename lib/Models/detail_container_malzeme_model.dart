@@ -3,5 +3,10 @@ class DetailMalzemeContainerModel {
   final String icon;
   final String malzeme;
 
-  DetailMalzemeContainerModel({required this.icon, required this.malzeme});
+
+  DetailMalzemeContainerModel({
+    required this.icon,
+    required this.malzeme,
+
+  });
 }
