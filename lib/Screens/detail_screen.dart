@@ -48,12 +48,12 @@ class DetailScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AciklamaScreen()),
-                  );
-                },
+                 onPressed: () {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => AciklamaScreen(flowerType: detailBaslik)),
+                   );
+                 },
                 child: Text('Detay'),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),

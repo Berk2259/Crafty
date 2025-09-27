@@ -1,3 +1,4 @@
+import 'package:crafty/Models/aciklama_model.dart';
 import 'package:crafty/Models/detail_container_malzeme_model.dart';
 
 class DetailData {
@@ -59,5 +60,24 @@ class DetailData {
         malzeme: 'İğne',
       ),
     ],
+  };
+
+  // Her çiçek türü için farklı açıklamalar
+  static Map<String, List<AciklamaModel>> flowerAciklamalar = {
+    'Gül': [
+      AciklamaModel(
+        aciklama: [
+          'asfgsgdsfbdhsfbkdsfbkdsfbkdsfbkdsbfkdsf',
+          'dsfkjdsfkdsbkfdsbfkdsbfkds',
+          'dfskdsfkjdsfkjsfkjh',
+        ],
+      ),
+    ],
+
+    'Orkide': [AciklamaModel(aciklama: [])],
+
+    'Papatya': [AciklamaModel(aciklama: [])],
+
+    'Lavanta': [AciklamaModel(aciklama: [])],
   };
 }
