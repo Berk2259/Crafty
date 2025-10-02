@@ -1,7 +1,7 @@
 import 'package:crafty/Models/model.dart';
 import 'package:flutter/material.dart';
 
-//Detay sayfasındaki malzemelerin container yapısı burada tanımlandı
+//ilk Detay sayfasındaki malzemelerin container yapısı burada tanımlandı
 
 class DetailMalzemeContainer extends StatelessWidget {
   DetailMalzemeContainerModel detailMalzemeContainerModel;

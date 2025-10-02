@@ -1,10 +1,13 @@
 import 'package:crafty/Widget/widget.dart';
-import 'package:crafty/Models/detail_data.dart';
+import 'package:crafty/Models/aciklama_model.dart';
+import 'package:crafty/services/flower_data_service.dart';
 import 'package:flutter/material.dart';
 
 class AciklamaScreen extends StatelessWidget {
   final String flowerType;
-  const AciklamaScreen({super.key, required this.flowerType});
+  final FlowerDataService flowerDataService = FlowerDataService();
+
+  AciklamaScreen({super.key, required this.flowerType});
 
   @override
   Widget build(BuildContext context) {
@@ -25,31 +28,21 @@ class AciklamaScreen extends StatelessWidget {
           ),
           color: Colors.deepPurple.shade300,
         ),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.only(top: 16.0),
-                itemCount:
-                    DetailData.flowerAciklamalar[flowerType]?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final aciklamalar = DetailData.flowerAciklamalar[flowerType];
-                  if (aciklamalar == null || aciklamalar.isEmpty) {
-                    return Container(
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Text(
-                        'Açıklama bulunamadı.',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    );
-                  }
-                  final aciklamaModel = aciklamalar[index];
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 16),
+        child: FutureBuilder<Map<String, List<AciklamaModel>>>(
+          future: flowerDataService.getAciklamalar(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            }
+            final aciklamalar = snapshot.data?[flowerType] ?? [];
+            return ListView.builder(
+              padding: EdgeInsets.only(top: 16.0),
+              itemCount: aciklamalar.length,
+              itemBuilder: (context, index) {
+                final aciklamaModel = aciklamalar[index];
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -63,33 +56,32 @@ class AciklamaScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.deepPurple.shade900,
+                            color: const Color.fromARGB(255, 81, 76, 100),
                           ),
                         ),
                         SizedBox(height: 8),
-                        if (aciklamaModel.aciklama != null)
-                          ...aciklamaModel.aciklama!
-                              .map(
-                                (aciklama) => Padding(
-                                  padding: EdgeInsets.only(bottom: 8),
-                                  child: Text(
-                                    '• $aciklama',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      height: 1.5,
-                                      color: Colors.black87,
-                                    ),
+                        ...aciklamaModel.aciklama
+                            .map(
+                              (aciklama) => Padding(
+                                padding: EdgeInsets.only(bottom: 8),
+                                child: Text(
+                                  '• $aciklama',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    height: 1.5,
+                                    color: Colors.black87,
                                   ),
                                 ),
-                              )
-                              .toList(),
+                              ),
+                            )
+                            .toList(),
                       ],
                     ),
-                  );
-                },
-              ),
-            ),
-          ],
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );

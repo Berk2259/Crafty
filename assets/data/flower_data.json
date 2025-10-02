@@ -1,0 +1,44 @@
+{
+  "flowerMaterials": {
+    "Gül": [
+      {"icon": "assets/images/makas.png", "malzeme": "Makas"},
+      {"icon": "assets/images/tape.png", "malzeme": "Bant"},
+      {"icon": "assets/images/needle.png", "malzeme": "İğne"}
+    ],
+    "Orkide": [
+      {"icon": "assets/images/makas.png", "malzeme": "Makas"},
+      {"icon": "assets/images/tape.png", "malzeme": "Bant"},
+      {"icon": "assets/images/needle.png", "malzeme": "İğne"}
+    ],
+    "Papatya": [
+      {"icon": "assets/images/makas.png", "malzeme": "Makas"},
+      {"icon": "assets/images/tape.png", "malzeme": "Bant"},
+      {"icon": "assets/images/needle.png", "malzeme": "İğne"}
+    ],
+    "Lavanta": [
+      {"icon": "assets/images/makas.png", "malzeme": "Makas"},
+      {"icon": "assets/images/tape.png", "malzeme": "Bant"},
+      {"icon": "assets/images/needle.png", "malzeme": "İğne"}
+    ]
+  },
+  "flowerAciklamalar": {
+    "Gül": [
+      {
+        "aciklama": [
+          "asfgsgdsfbdhsfbkdsfbkdsfbkdsfbkdsbfkdsf",
+          "dsfkjdsfkdsbkfdsbfkdsbfkds",
+          "dfskdsfkjdsfkjsfkjh"
+        ]
+      }
+    ],
+    "Orkide": [
+      {"aciklama": []}
+    ],
+    "Papatya": [
+      {"aciklama": []}
+    ],
+    "Lavanta": [
+      {"aciklama": []}
+    ]
+  }
+}

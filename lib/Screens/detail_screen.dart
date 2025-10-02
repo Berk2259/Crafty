@@ -1,12 +1,12 @@
 import 'package:crafty/Models/model.dart';
-import 'package:crafty/Models/detail_data.dart';
 import 'package:crafty/Containers/container.dart';
-import 'package:crafty/Screens/screen.dart';
+import 'package:crafty/Services/services.dart';
 import 'package:crafty/Widget/widget.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
   final String detailBaslik;
+  final FlowerDataService flowerDataService = FlowerDataService();
   DetailScreen({super.key, required this.detailBaslik});
 
   @override
@@ -32,34 +32,27 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.only(top: 16.0),
-                itemCount:
-                    DetailData.flowerMaterials[detailBaslik]?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final materials = DetailData.flowerMaterials[detailBaslik];
-                  if (materials == null) return SizedBox.shrink();
-                  return DetailMalzemeContainer(
-                    detailMalzemeContainerModel: materials[index],
-                  );
-                },
-              ),
+              child:
+                  FutureBuilder<Map<String, List<DetailMalzemeContainerModel>>>(
+                    future: flowerDataService.getMaterials(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      final materials = snapshot.data![detailBaslik]!;
+                      return ListView.builder(
+                        padding: EdgeInsets.only(top: 16.0),
+                        itemCount: materials.length,
+                        itemBuilder: (context, index) {
+                          return DetailMalzemeContainer(
+                            detailMalzemeContainerModel: materials[index],
+                          );
+                        },
+                      );
+                    },
+                  ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                 onPressed: () {
-                   Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => AciklamaScreen(flowerType: detailBaslik)),
-                   );
-                 },
-                child: Text('Detay'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                ),
-              ),
-            ),
+            DetayButtonWidget(detailBaslik: detailBaslik),
           ],
         ),
       ),

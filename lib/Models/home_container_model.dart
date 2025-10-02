@@ -6,3 +6,5 @@ class HomeContainerModel {
 
   HomeContainerModel({required this.baslik, required this.image});
 }
+
+//Giriş sayfasındaki çiçeklerin yapısal özellikleri burada tanımlandı
