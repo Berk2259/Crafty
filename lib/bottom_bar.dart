@@ -39,7 +39,8 @@ class _BottomBarState extends State<BottomBar> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 BottomBarItem(
-                  icon: Iconsax.home_copy,
+                  icon1: Iconsax.home_2,
+                  icon2: Iconsax.home_2_copy,
                   selected: currentIndex == 0,
                   text: 'Ana Sayfa',
                   onTap: () {
@@ -49,7 +50,8 @@ class _BottomBarState extends State<BottomBar> {
                   },
                 ),
                 BottomBarItem(
-                  icon: Iconsax.heart_copy,
+                  icon1: Iconsax.heart,
+                  icon2: Iconsax.heart_copy,
                   selected: currentIndex == 1,
                   text: 'Favoriler',
                   onTap: () {
@@ -68,13 +70,15 @@ class _BottomBarState extends State<BottomBar> {
 }
 
 class BottomBarItem extends StatelessWidget {
-  final IconData icon;
+  final IconData icon1;
+   final IconData icon2;
   final String text;
   final bool selected;
   final VoidCallback onTap;
   const BottomBarItem({
     super.key,
-    required this.icon,
+    required this.icon1,
+    required this.icon2,
     required this.selected,
     required this.onTap,
     required this.text,
@@ -88,7 +92,7 @@ class BottomBarItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            icon,
+            selected ? icon1 : icon2,
             color: selected ? Colors.purple : Colors.white,
             size: selected ? 30 : 25,
           ),
